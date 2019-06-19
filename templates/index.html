@@ -1,3 +1,8 @@
 {% extends 'layout.html' %}
 {% block page_title %} Home page {% endblock %}
-{% block content %} Home page {% endblock %}
+{% block content %} 
+<h1>Home page </h1>
+{% load staticfiles %}
+<img src="{% static 'images/monk-2316340_1280-1.jpg' %}" height="150" width="150" alt="">
+
+{% endblock %}
