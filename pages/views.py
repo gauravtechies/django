@@ -4,9 +4,11 @@ from django.views import View
 # Create your views here.
 #this is procedural view in this we have to use if else for get post
 def home(request):
-       return HttpResponse("<h1>Welcome to my django app</h1>")
+       return render(request,'index.html',{'title':'Home page'})
+
 def about(request):
-    return HttpResponse("<h1>About us</h1>")
+     return render(request,'about.html',{'title':'About us'})
+
 #this is class based view 
 class contact(View):
     def get(self,request):
