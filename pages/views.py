@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View 
+from pages.models import About
 # Create your views here.
 #this is procedural view in this we have to use if else for get post
 def home(request):
@@ -8,10 +9,18 @@ def home(request):
 
 def about(request):
     if(request.method=='POST'):
-        email=request.POST['email']
-        address=request.POST['address'] 
-        zipcode=request.POST['zipcode']
-        return render(request,'about.html',{'title':'About us','email':email,'address':address, 'zipcode':zipcode})
+        data= About(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            address=request.POST['address'],
+            zipcode=request.POST['zipcode']
+        )
+        data.save()
+        cnt=About.objects.all()
+        # email=request.POST['email']
+        # address=request.POST['address'] 
+        # zipcode=request.POST['zipcode']
+        return render(request,'about.html',{'title':'About us','rows':cnt})
     
     return render(request,'about.html',{'title':'About us'})
 
