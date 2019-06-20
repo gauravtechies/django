@@ -76,12 +76,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME':'ccareline',
-            'USER': 'gauravproblem',
-           'PASSWORD': 'password',
+        'ENGINE': 'django.db.backends.mysql',
+        'sql_mode': 'strict',
+            'NAME':'mysite',
+            'USER': 'root',
+           'PASSWORD': 'pass',
            'HOST': 'localhost',
-           'PORT': '5433',
+           'PORT': '3306',
     }
 }
 
