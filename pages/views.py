@@ -7,7 +7,13 @@ def home(request):
        return render(request,'index.html',{'title':'Home page'})
 
 def about(request):
-     return render(request,'about.html',{'title':'About us'})
+    if(request.method=='POST'):
+        email=request.POST['email']
+        address=request.POST['address'] 
+        zipcode=request.POST['zipcode']
+        return render(request,'about.html',{'title':'About us','email':email,'address':address, 'zipcode':zipcode})
+    
+    return render(request,'about.html',{'title':'About us'})
 
 #this is class based view 
 class contact(View):

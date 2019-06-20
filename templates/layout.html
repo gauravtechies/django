@@ -7,8 +7,13 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" >
 </head>
 <body>
-
-{% block content %} {% endblock %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-ms-2">
+            {% block content %} {% endblock %} 
+        </div>
+    </div>
+</div>
 
 </body>
 </html> 
