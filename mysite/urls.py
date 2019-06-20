@@ -22,6 +22,6 @@ urlpatterns = [
     # path('',home),
     # path('contact/', contact.as_view()),
     path('pages/', include('pages.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # python manage.py createsuperuser
 
 ]
