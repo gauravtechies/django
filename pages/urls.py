@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path
 from pages.views import home, contact, about, member,team,categoryWiseMember,greatmember

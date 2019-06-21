@@ -41,6 +41,8 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Zip code</th>
+                <th colspan=2>Actions</th>
+                <th></th>
               
               </tr>
             </thead>
@@ -50,8 +52,9 @@
                   <td>{{row.name}}</td>
                   <td>{{row.email}}</td>
                   <td>{{row.address}}</td>
-              
                   <td>{{row.zipcode}}</td>
+                  <td><a href="/pages/about?id={{row.id}}&method=edit">Edit</a></td>
+                  <td><a href="/pages/about?id={{row.id}}&method=delete">Delete</a></td>
                 </tr>
               {% endfor %}
             </tbody>
