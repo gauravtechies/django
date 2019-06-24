@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from pages.views import home, contact
+#from pages.views import home, contact
 
 #include the url conf 
 urlpatterns = [
-    # path('',home),
-    # path('contact/', contact.as_view()),
+   # path('',home),
+   # path('contact/', contact.as_view()),
     path('pages/', include('pages.urls')),
+    path('posts/',include('posts.urls')),
     path('admin/', admin.site.urls),  # python manage.py createsuperuser
 
 ]

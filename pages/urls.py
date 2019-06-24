@@ -4,7 +4,7 @@ from pages.views import home, contact, about, member,team,categoryWiseMember,gre
 
 
 urlpatterns = [
-    path('',home),
+    path('image/',home),
     path('members/', team, name="team"),
     path('member/<int:id>', member,name="member"),
     path('category/<int:cat_id>/member/<int:mem_id>', categoryWiseMember,name="categoryWiseMember"),

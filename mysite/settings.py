@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages'
+    'pages',
+    'posts.apps.PostsConfig'
 ]
 
 MIDDLEWARE = [
@@ -80,9 +81,9 @@ DATABASES = {
         'sql_mode': 'strict',
             'NAME':'mysite',
             'USER': 'root',
-           'PASSWORD': 'pass',
-           'HOST': 'localhost',
-           'PORT': '3306',
+            'PASSWORD': 'pass',
+            'HOST': 'localhost',
+            'PORT': '3306',
     }
 }
 
@@ -111,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

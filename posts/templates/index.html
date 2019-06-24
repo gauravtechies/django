@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block contents %}
+<form action="/">
+    {% csrf_token %}
+    <div class="form-row">
+        {{form}}
+    </div>
+    <input type="submit" value="Add Post">
+</form>
+{% endblock %}
