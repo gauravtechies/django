@@ -1,10 +1,18 @@
 {% extends 'posts/layout.html' %}
 {% block content %}
-<form action="/">
+<form method="POST"  action="">
     {% csrf_token %}
     <div class="form-row">
-        {{forms}}
+        {% for f in forms %}
+           <p>{{f}}</p>
+        {% endfor %}
     </div>
     <input type="submit" value="Add Post">
 </form>
+<div>
+    {% for row in rows %}
+        <h2>{{row.title}}</h2>
+        <p>{{row.content}}-<small>{{row.created_at}}</small></p>
+    {% endfor %}
+</div>
 {% endblock %}

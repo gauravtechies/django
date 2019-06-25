@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from posts.models import Posts, PostsForm
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
 def index(request):
     form = PostsForm()
-    return render(request,'posts/index.html',{'title': 'Add New Post','forms':form})
+    data = Posts.objects.all()
+    if request.method == 'POST':
+        form=PostsForm(request.POST)
+        if form.is_valid():
+           form.save()
+           return redirect('/posts')
+    return render(request,'posts/index.html',{'title': 'Add New Post','forms':form,'rows':data})
