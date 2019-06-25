@@ -5,7 +5,7 @@ from pages.models import About
 # Create your views here.
 #this is procedural view in this we have to use if else for get post
 def home(request):
-       return render(request,'index.html',{'title':'Home page'})
+       return render(request,'pages/index.html',{'title':'Home page'})
 
 def about(request):
     if(request.method =='GET' and request.GET.get('method')=='delete' and request.GET.get('id')):
@@ -13,7 +13,7 @@ def about(request):
             rec.delete()
     if(request.method =='GET' and request.GET.get('method')=='edit' and request.GET.get('id')):
             rec= About.objects.filter(id=request.GET.get('id')).get()
-            return render(request,'edit.html',{'title':'About us','rows':rec})
+            return render(request,'pages/edit.html',{'title':'About us','rows':rec})
     if(request.method=='POST'):
         if(request.GET.get('method')=="edit"):
             rec= About.objects.filter(id=request.GET.get('id'))
@@ -38,7 +38,7 @@ def about(request):
         # zipcode=request.POST['zipcode']
         # return render(request,'about.html',{'title':'About us'})
     cnt=About.objects.all()
-    return render(request,'about.html',{'title':'About us','rows':cnt})
+    return render(request,'pages/about.html',{'title':'About us','rows':cnt})
 
 #this is class based view 
 class contact(View):
