@@ -23,6 +23,7 @@ urlpatterns = [
    # path('contact/', contact.as_view()),
     path('pages/', include('pages.urls')),
     path('posts/',include('posts.urls')),
+    path('user/',include('user.urls')),
     path('admin/', admin.site.urls),  # python manage.py createsuperuser
 
 ]
