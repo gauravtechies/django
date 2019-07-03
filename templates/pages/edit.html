@@ -1,0 +1,37 @@
+{% extends 'pages/layout.html' %}
+{% block page_title %} About page {% endblock %}
+{% block content %}
+<form method="POST" action="/pages/about/?method=edit&id={{rows.id}}">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                {% csrf_token %}
+            </div>        
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputName">Name</label>
+            <input name="name" type="text" class="form-control" id="inputName" value="{{rows.name}}">
+          </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4">Email</label>
+            <input name="email" type="email" class="form-control" id="inputEmail4" value="{{rows.email}}">
+          </div>
+        
+        </div>
+        <div class="form-row">
+          <label for="inputAddress">Address</label>
+          <input name="address" type="text" class="form-control" id="inputAddress" value="{{rows.address}}">
+        </div>
+       
+        <div class="form-row">
+            <div class="form-group col-md-2">
+            <label for="inputZip">ZipCode</label>
+            <input name="zipcode" type="text" class="form-control" id="inputZip" value="{{rows.zipcode}}">
+          </div>
+        </div></br></br>
+       
+        <button name="submit" type="submit" class="btn btn-primary">Update Record</button>
+      </form>
+     
+{% endblock %}

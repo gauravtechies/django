@@ -1,0 +1,46 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+<form method="POST"  action="">
+    {% csrf_token %}
+    <div class="form-row">
+        {% if forms.errors.title %}
+            {% for err_title in forms.errors.title %}
+                <p>Title: {{ err_title | escape }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if forms.errors.content %}
+            {% for err_content in forms.errors.content %}
+                <p>Contents: {{ err_content | escape }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        {% for f in forms %}
+            <p>{{f.label_tag}}</p>
+           <p>{{f}}</p>
+        {% endfor %}
+        {% if form.errors %}
+            {% for errors in form.non_field_errors %}
+                <P>{{errors | escape }}</P>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <input type="submit" value="Add Post">
+</form>
+<div>
+    {% for row in rows %}
+        <h2>{{row.title}}</h2>
+        <p>{{row.content}}-<small>{{row.created_at}}--{{row.user.username}}</small></p>
+        <p>{{row.category.all|join:" , "}}</p>
+    {% endfor %}
+    
+</div>
+<div>
+    <h2>categories</h2>
+    {% for cats in category %}
+        {% for cat  in cats.categories.all %}
+            <h2>{{cats}}</h2>
+            <p>{{cat}}</p>
+        {% endfor %}    
+    {% endfor %}
+</div>
+{% endblock %}
