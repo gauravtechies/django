@@ -15,7 +15,9 @@
         <div id="content" class="colM">
             <div id="content-main">
                 {% if messages %}
-                    {{messages}}
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
                 {% endif %}
                 <form action="/user/login" method="post" id="login-form">
                     {% csrf_token %}
@@ -34,7 +36,7 @@
                         {{form.password}}
                         </div>
                     <div class="submit-row">
-                        <label>&nbsp;</label><input type="submit" value="Register" />
+                        <label>&nbsp;</label><input type="submit" value="Login" />
                     </div>
                 </form>
             </div>
