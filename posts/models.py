@@ -25,7 +25,8 @@ class Posts(models.Model):
                 raise  ValidationError("Value must be greater than 10")
 
         title = models.CharField(validators=[min_length_check], max_length=255)
-        user=models.OneToOneField(User,on_delete=models.CASCADE,default=1)
+        user=models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+        category=models.ManyToManyField(Category,related_name='categories',default=0)
         content = models.TextField(validators=[validators.validate_integer])
         created_at = models.DateTimeField(auto_now_add=True)
         updated_at = models.DateTimeField(auto_now=True)
@@ -38,7 +39,7 @@ class Posts(models.Model):
 class PostsForm(forms.ModelForm):
     class Meta:
         model=Posts
-        fields =['title','content','user']
+        fields =['title','content','user','category']
 
 
 def clean(self):
