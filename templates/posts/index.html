@@ -29,7 +29,7 @@
 <div>
     {% for row in rows %}
         <h2>{{row.title}}</h2>
-        <p>{{row.content}}-<small>{{row.created_at}}</small></p>
+        <p>{{row.content}}-<small>{{row.created_at}}--{{row.user.username}}</small></p>
     {% endfor %}
 </div>
 {% endblock %}
