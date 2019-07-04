@@ -3,6 +3,7 @@ from django import forms
 from django.core import validators
 from django.core.validators import ValidationError
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Category(models.Model):
@@ -50,7 +51,20 @@ class PostsForm(forms.ModelForm):
     class Meta:
         model=Posts
         fields =['title','content','user','category']
+        widgets={
+            'title':forms.TextInput(attrs={'class':'form-control',"placeholder":"Enter Post title"}),
+            'content':forms.Textarea(attrs={'class':'form-control'}),
+            'user':forms.Select(attrs={'class':'form-control'}),
+            'category':forms.Select(attrs={'class':'form-control'})
 
+        }
+        help_texts={
+            'title':'Enter Title here'
+        }
+        error_messages={}
+        labels={
+            'title':'Enter Post Title'
+        }
 
 def clean(self):
     fields = self.cleaned_data
