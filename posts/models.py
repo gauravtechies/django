@@ -19,6 +19,12 @@ class Category(models.Model):
         def __str__(self):
             return self.title
 
+        class Meta:
+            db_table = 'categories'
+            verbose_name='Category'
+            verbose_name_plural='Categories'
+            ordering=['-created_at']
+
 class Posts(models.Model):
         def min_length_check(val):
             if len(val) <= 10:
@@ -35,6 +41,10 @@ class Posts(models.Model):
 
         def __str__(self):
             return self.title
+        class Meta:
+            db_table = 'posts'
+            verbose_name='Post'
+            verbose_name_plural='Posts'
 
 class PostsForm(forms.ModelForm):
     class Meta:
