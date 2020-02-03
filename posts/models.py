@@ -3,6 +3,7 @@ from django import forms
 from django.core import validators
 from django.core.validators import ValidationError
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Category(models.Model):
@@ -18,6 +19,12 @@ class Category(models.Model):
 
         def __str__(self):
             return self.title
+
+        class Meta:
+            db_table = 'categories'
+            verbose_name='Category'
+            verbose_name_plural='Categories'
+            ordering=['-created_at']
 
 class Posts(models.Model):
         def min_length_check(val):
@@ -35,12 +42,29 @@ class Posts(models.Model):
 
         def __str__(self):
             return self.title
+        class Meta:
+            db_table = 'posts'
+            verbose_name='Post'
+            verbose_name_plural='Posts'
 
 class PostsForm(forms.ModelForm):
     class Meta:
         model=Posts
         fields =['title','content','user','category']
+        widgets={
+            'title':forms.TextInput(attrs={'class':'form-control',"placeholder":"Enter Post title"}),
+            'content':forms.Textarea(attrs={'class':'form-control'}),
+            'user':forms.Select(attrs={'class':'form-control'}),
+            'category':forms.Select(attrs={'class':'form-control'})
 
+        }
+        help_texts={
+            'title':'Enter Title here'
+        }
+        error_messages={}
+        labels={
+            'title':'Enter Post Title'
+        }
 
 def clean(self):
     fields = self.cleaned_data
